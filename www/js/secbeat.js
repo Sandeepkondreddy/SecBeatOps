@@ -21,15 +21,15 @@ function onDeviceReady() {
 
                 hidloc.value = "";
                 hidloctype.value = "";
-                btnSubmit.style.display = 'none';
-                btnClear.style.display = 'none';
+                //btnSubmit.style.display = 'none';
+                //btnClear.style.display = 'none';
                 //GetTruckDetails(label.data.substring(3));//Added for fetching truck details on NFC read
                 oldvalue = "";
                 GetDeviceStatus();
                 GetTag_TruckDetails(label.data.substring(3));//Added for fetching truck details on NFC read
                 //GetDeviceStatus();
                 Reason();
-                GetUserStages($("#hidusrid").val());
+                //GetUserStages($("#hidusrid").val());
                 $("#loading").hide();
             },
             function(){
@@ -82,8 +82,8 @@ function qs() {
 $(document).ready(function () {
     $("#imgtruck").hide();
     $("#loading").hide();
-    $("#btnSubmit").hide();
-    $("#btnClear").hide();
+    //$("#btnSubmit").hide();
+    //$("#btnClear").hide();
     $("#txttruckno").focus();
     $("#selLocation").prop('disabled', true);
     qs();
