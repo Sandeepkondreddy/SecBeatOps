@@ -89,10 +89,10 @@ $(document).ready(function () {
     $("#selLocation").prop('disabled', true);
     qs();
     GetDeviceStatus();
-	txtBeatOfficer.val($("#user").val());
+	//txtBeatOfficer.val($("#user").val());
     //GetTruckDetails($("#txttruckno").val().trim());
-    Reason();
-
+    //Reason();
+	getUserName($("#hidusrid").val());
     $("#home").click(function () {
         $("#loading").show();
         $.ajax({
@@ -151,7 +151,7 @@ $(document).ready(function () {
 
     $("#btnClear").click(function (){
         $("#loading").show();
-        window.location.href = 'SDS.html?user=' + btoa($("#hidusrid").val());
+        window.location.href = 'SecBeat.html?user=' + btoa($("#hidusrid").val());
     });
 
     $("#btnSubmit").click(function (){
@@ -470,3 +470,30 @@ function scanTruck()
    //  $("#loading").hide();
 }
 
+function getUserName(userid)
+{
+	var usrid = userid == "" ? "" : userid;
+	$.ajax({
+		//url: 'http://localhost:51594/api/Account/GetUserNameById/' + usrid,
+		url: 'http://apps.kpcl.com/KPCTSDS/api/Account/GetUserById/'+ usrid,
+		 type: 'GET',
+            data: '{}',
+            dataType: 'json',
+            async: false,
+            success: function (result) {
+                if (result.length > 0) {
+						$("#txtBeatOfficer").val(result[0].EmployeeName);
+					}
+                else {
+                    $("#txtstatus").text("No Data Found");
+                    $("#txtstatus").attr('class', 'text-danger');
+                }
+            },
+            error: function () {
+                alert('Error occurred while loading Truck details.');
+                $("#imgtruck").hide();
+                $("#loading").hide();
+            }
+        });
+    
+}
