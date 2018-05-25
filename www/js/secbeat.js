@@ -27,6 +27,7 @@ function onDeviceReady() {
                 oldvalue = "";
                 GetDeviceStatus();
                 GetTag_TruckDetails(label.data.substring(3));//Added for fetching truck details on NFC read
+				txtBeatOfficer.val($("#hidusrid").val());
                 //GetDeviceStatus();
                 Reason();
                 //GetUserStages($("#hidusrid").val());
@@ -88,6 +89,7 @@ $(document).ready(function () {
     $("#selLocation").prop('disabled', true);
     qs();
     GetDeviceStatus();
+	txtBeatOfficer.val($("#user").val());
     //GetTruckDetails($("#txttruckno").val().trim());
     Reason();
 
