@@ -15,7 +15,7 @@ function onDeviceReady() {
                 var label = document.createTextNode(nfc.bytesToString(tagdata));
                 //txttruckno.value = label.data.substring(3);
                 txttag.value=label.data.substring(3);
-				alert(label.data);
+				alert(record);
                 lblerr.innerHTML = "";
                 txtloc.value = "";
                 txtstatus.innerHTML = "";
@@ -27,11 +27,11 @@ function onDeviceReady() {
                 //GetTruckDetails(label.data.substring(3));//Added for fetching truck details on NFC read
 				getLocationDetails(label.data.substring(3));
                 oldvalue = "";
-                GetDeviceStatus();
-                GetTag_TruckDetails(label.data.substring(3));//Added for fetching truck details on NFC read
+                //GetDeviceStatus();
+                //GetTag_TruckDetails(label.data.substring(3));//Added for fetching truck details on NFC read
 				txtBeatOfficer.val($("#hidusrid").val());
                 //GetDeviceStatus();
-                Reason();
+                //Reason();
                 //GetUserStages($("#hidusrid").val());
                 $("#loading").hide();
             },
