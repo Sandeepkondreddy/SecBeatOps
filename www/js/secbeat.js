@@ -24,6 +24,7 @@ function onDeviceReady() {
                 //btnSubmit.style.display = 'none';
                 //btnClear.style.display = 'none';
                 //GetTruckDetails(label.data.substring(3));//Added for fetching truck details on NFC read
+				getLocationDetails(label.data.substring(3));
                 oldvalue = "";
                 GetDeviceStatus();
                 GetTag_TruckDetails(label.data.substring(3));//Added for fetching truck details on NFC read
@@ -157,63 +158,38 @@ $(document).ready(function () {
 
     $("#btnSubmit").click(function (){
         var $btn = $("#btnSubmit");
-        GetTruckDetails($("#txttruckno").val());
-        /*if(LocationValidations() == false)
+        //GetTruckDetails($("#txttruckno").val());
+        
+        if($("#txttag").val() == "")
         {
-            return false;
-        }
-        else*/ if(oldvalue != $("#hidNewStatus").val())
-        {
-            $("#btnSubmit").attr('disabled', true);
-            $btn.html("<i class='fa fa-check'></i> " + oldvalue);
-            alert('Truck status has been changed. Please search once again.');
-            return false;
-        }
-        else if($("#hidStatusId").val() == 5 && $("#hidloctype").val() == 2 && $("#hidNewStatus").val() == "ACTIVITY END")
-        {
-            window.location.href = 'TallySheet.html?user=' + btoa($("#hidusrid").val()) + '&trkid=' + btoa($("#hidTruckId").val()) + '&trkno=' + btoa($("#txttruckno").val().trim()) + '&loctype=' + btoa($("#hidloctype").val()) + '';
-        }
-        else if($("#hidStatusId").val() == 5 && $("#hidloctype").val() == 1 && $("#hidNewStatus").val() == "ACTIVITY END")
-        {
-            window.location.href = 'TallySheet.html?user=' + btoa($("#hidusrid").val()) + '&trkid=' + btoa($("#hidTruckId").val()) + '&trkno=' + btoa($("#txttruckno").val().trim()) + '&loctype=' + btoa($("#hidloctype").val()) + '';
-        }
-        else if(RemarksValidations() == false)
-        {
-            return false;
+            alert('Please Scan Tag.');
+			//window.location.href = 'TallySheet.html?user=' + btoa($("#hidusrid").val()) + '&trkid=' + btoa($("#hidTruckId").val()) + '&trkno=' + btoa($("#txttruckno").val().trim()) + '&loctype=' + btoa($("#hidloctype").val()) + '';
         }
         else
         {
             $btn.html("<i class='fa fa-spinner fa-spin'></i>data is submitting please wait...");
             $btn.attr('disabled', true);
             $btn.attr('class', 'btn btn-custom-icon');
-            var locType = $("#txtloctype").val();
-            var loc = $("#hidloc").val();
-            /*$("#selLocation option:selected").each(function () {
-                loc += $(this).val().trim();
-            });*/
             var reason = "";
             $("#selReason option:selected").each(function () {
                 reason += $(this).val().trim();
             });
 
             var Adddata = {};
-            Adddata.TruckNo = $("#txttruckno").val();
-            Adddata.LocationName = loc;
-            Adddata.LocationType = locType;
-            Adddata.Qty = $("#txtqty").val();
-            Adddata.ReasonId = reason;
+            Adddata.TagNo = $("#txttag").val();
+            Adddata.LocationId = $("#hidLocId").val();            
+            Adddata.BeatOfficer = $("#txtBeatOfficer").val();
+            //Adddata.ReasonId = reason;
             Adddata.Remarks = $("#txtremarks").val();
             Adddata.User = $("#hidusrid").val();
             $.ajax({
                 type: 'POST',
                 url: 'http://apps.kpcl.com/KPCTSDS/api/TruckDetails/AddData',
-		//  url: 'http://202.83.27.199/KPCTSDS/api/TruckDetails/AddData',
-		//url: 'http://182.72.244.25/KPCTSDS/api/TruckDetails/AddData',
                 dataType: "json",
                 data: Adddata,
                 success: function (result) {
                     alert('Data Saved Successfully.');
-                    window.location.href = 'SDS.html?user=' + btoa($("#hidusrid").val());
+                    window.location.href = 'SecBeat.html?user=' + btoa($("#hidusrid").val());
                 },
                 error: function (xhr, status, error) {
                     alert('Error occurred while saving the data.\n\r' + xhr.responseText);
