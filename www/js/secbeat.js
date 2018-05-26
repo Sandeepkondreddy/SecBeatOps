@@ -428,26 +428,7 @@ function ShowObjects()
 }
 
 
-function scan()
-{
-    cordova.plugins.barcodeScanner.scan(
-        function (result) {
-            if (!result.cancelled) {
-                 $("#txttruckno").val("");
-                 $("#txttag").val(result.text);
-                 //oldvalue = "";
-                 GetDeviceStatus();
-                 //GetTag_TruckDetails(result.text);//Added for fetching truck details on QR-Code Scan
-            }
-        },
-        function (error) {
-            alert("Scanning failed: " + error);
-        }
-    );
-   // Reason();
-   // GetUserStages($("#hidusrid").val());
-   //  $("#loading").hide();
-}
+
 
 function scanTruck()
 {
@@ -525,4 +506,27 @@ function getLocationDetails(TagNo)
             }
         });
     
+}
+
+
+function scan()
+{
+    cordova.plugins.barcodeScanner.scan(
+        function (result) {
+            if (!result.cancelled) {
+                 $("#txttruckno").val("");
+                 $("#txttag").val(result.text);
+                 //oldvalue = "";
+                 GetDeviceStatus();
+				 getLocationDetails(result.text);
+                 //GetTag_TruckDetails(result.text);//Added for fetching truck details on QR-Code Scan
+            }
+        },
+        function (error) {
+            alert("Scanning failed: " + error);
+        }
+    );
+   // Reason();
+   // GetUserStages($("#hidusrid").val());
+   //  $("#loading").hide();
 }
