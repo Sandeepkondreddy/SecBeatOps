@@ -497,3 +497,32 @@ function getUserName(userid)
         });
     
 }
+
+function getLocationDetails(TagNo)
+{
+	var TagNo = tagno == "" ? "" : tagno;
+	$.ajax({
+		//url: 'http://localhost:51594/api/Account/GetUserNameById/' + usrid,
+		url: 'http://apps.kpcl.com/SecBeatAPI/api/Account/GetLocationByTagNo/'+ TagNo,
+		 type: 'GET',
+            data: '{}',
+            dataType: 'json',
+            async: false,
+            success: function (result) {
+                if (result.length > 0) {
+						$("#txtloc").val(result[0].LocationName);
+						$("#hidLocId").val(result[0].StatusId);
+					}
+                else {
+                    $("#txtstatus").text("No Data Found");
+                    $("#txtstatus").attr('class', 'text-danger');
+                }
+            },
+            error: function () {
+                alert('Error occurred while loading Truck details.');
+                $("#imgtruck").hide();
+                $("#loading").hide();
+            }
+        });
+    
+}
