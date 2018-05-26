@@ -470,7 +470,7 @@ function getLocationDetails(tagno)
             success: function (result) {
                 if (result.length > 0) {
 						$("#txtloc").val(result[0].LocationName);
-						$("#hidLocId").val(result[0].StatusId);
+						$("#hidLocId").val(result[0].LocationId);
 					}
                 else {
                     $("#txtstatus").text("No Data Found");
