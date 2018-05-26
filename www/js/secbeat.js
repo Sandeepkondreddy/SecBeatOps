@@ -15,6 +15,7 @@ function onDeviceReady() {
                 var label = document.createTextNode(nfc.bytesToString(tagdata));
                 //txttruckno.value = label.data.substring(3);
                 txttag.value=label.data.substring(3);
+				alert(tagdata);
                 lblerr.innerHTML = "";
                 txtloc.value = "";
                 txtstatus.innerHTML = "";
@@ -179,7 +180,7 @@ $(document).ready(function () {
             Adddata.TagNo = $("#txttag").val();
             Adddata.LocationId = $("#hidLocId").val();            
             Adddata.BeatOfficer = $("#txtBeatOfficer").val();
-            //Adddata.ReasonId = reason;
+			Adddata.IMEI=$("#hidimei").val();            
             Adddata.Remarks = $("#txtremarks").val();
             Adddata.User = $("#hidusrid").val();
             $.ajax({
