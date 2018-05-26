@@ -94,7 +94,7 @@ $(document).ready(function () {
     //GetTruckDetails($("#txttruckno").val().trim());
     //Reason();
 	getUserName($("#hidusrid").val());
-	//getLocationDetails(10001);
+	//getLocationDetails(10001);txttag.value="10001"; hidLocId.value="1"; 
     $("#home").click(function () {
         $("#loading").show();
         $.ajax({
@@ -184,7 +184,8 @@ $(document).ready(function () {
             Adddata.User = $("#hidusrid").val();
             $.ajax({
                 type: 'POST',
-                url: 'http://apps.kpcl.com/KPCTSDS/api/TruckDetails/AddData',
+                url: 'http://apps.kpcl.com/SecBeatAPI/api/SecBeatDetails/AddData',
+				//url: 'http://localhost:51594/api/SecBeatDetails/AddData',
                 dataType: "json",
                 data: Adddata,
                 success: function (result) {
