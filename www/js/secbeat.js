@@ -93,6 +93,7 @@ $(document).ready(function () {
     //GetTruckDetails($("#txttruckno").val().trim());
     //Reason();
 	getUserName($("#hidusrid").val());
+	//getLocationDetails(10001);
     $("#home").click(function () {
         $("#loading").show();
         $.ajax({
@@ -479,7 +480,7 @@ function getUserName(userid)
     
 }
 
-function getLocationDetails(TagNo)
+function getLocationDetails(tagno)
 {
 	var TagNo = tagno == "" ? "" : tagno;
 	$.ajax({
@@ -517,7 +518,7 @@ function scan()
                  $("#txttruckno").val("");
                  $("#txttag").val(result.text);
                  //oldvalue = "";
-                 GetDeviceStatus();
+                 //GetDeviceStatus();
 				 getLocationDetails(result.text);
                  //GetTag_TruckDetails(result.text);//Added for fetching truck details on QR-Code Scan
             }
