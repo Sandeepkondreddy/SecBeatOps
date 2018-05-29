@@ -1,39 +1,44 @@
 var qsParm = new Array(), oldvalue = "";
 document.addEventListener("deviceready", onDeviceReady, false);
 
-/* function onDeviceReady() {
+function onDeviceReady() {
     document.addEventListener("backbutton", onBackKeyDown, false);
     $("#hiduuid").val(device.uuid);
     window.plugins.imeiplugin.getImei(callback);
     nfc.enabled(function(){        
         lblerr.innerHTML = "Tap nfc tag to read";
         nfc.addNdefListener(
-            function (record){
+            function (nfcEvent){
+				
+				var tag = nfcEvent.tag,
+                ndefMessage = tag.ndefMessage;
+				
+				// dump the raw json of the message
+				alert(JSON.stringify(ndefMessage));
+				
+				// assuming the first record in the message has
+                // a payload that can be converted to a string.
+				alert(nfc.bytesToString(ndefMessage[0].payload).substring(3));
+				
+				
                 $("#loading").show();
-                //txttruckno.value = "";
-                var tagdata = record.tag.ndefMessage[0]["payload"];
+                var tagdata = nfcEvent.tag.ndefMessage[0]["payload"];
 				alert(tagdata);
                 var label = document.createTextNode(nfc.bytesToString(tagdata));
                 //txttruckno.value = label.data.substring(3);
                 txttag.value=label.data.substring(3);
-				alert(record);
+				alert(nfcEvent);
                 lblerr.innerHTML = "";
                 txtloc.value = "";
                 txtstatus.innerHTML = "";
-
                 hidloc.value = "";
                 hidloctype.value = "";
-                //btnSubmit.style.display = 'none';
-                //btnClear.style.display = 'none';
                 //GetTruckDetails(label.data.substring(3));//Added for fetching truck details on NFC read
 				getLocationDetails(label.data.substring(3));
                 oldvalue = "";
                 //GetDeviceStatus();
                 //GetTag_TruckDetails(label.data.substring(3));//Added for fetching truck details on NFC read
 				txtBeatOfficer.val($("#hidusrid").val());
-                //GetDeviceStatus();
-                //Reason();
-                //GetUserStages($("#hidusrid").val());
                 $("#loading").hide();
             },
             function(){
@@ -46,8 +51,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
     function(){
         lblerr.innerHTML = "";
     });
-} */
-onDeviceReady: function() {
+}
+/* onDeviceReady: function() {
     app.receivedEvent('deviceready');
 $("#loading").hide();
     // Read NDEF formatted NFC Tags
@@ -73,7 +78,7 @@ $("#loading").hide();
         }
     );
 },
-
+ */
 function onBackKeyDown() {
 }
 function callback(imei) {
