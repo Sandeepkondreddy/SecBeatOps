@@ -10,8 +10,9 @@ function onDeviceReady() {
         nfc.addNdefListener(
             function (record){
                 $("#loading").show();
-                txttruckno.value = "";
+                //txttruckno.value = "";
                 var tagdata = record.tag.ndefMessage[0]["payload"];
+				alert(tagdata);
                 var label = document.createTextNode(nfc.bytesToString(tagdata));
                 //txttruckno.value = label.data.substring(3);
                 txttag.value=label.data.substring(3);
