@@ -49,7 +49,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 } */
 onDeviceReady: function() {
     app.receivedEvent('deviceready');
-
+$("#loading").hide();
     // Read NDEF formatted NFC Tags
     nfc.addNdefListener (
         function (nfcEvent) {
