@@ -1,7 +1,7 @@
 var qsParm = new Array(), oldvalue = "";
 document.addEventListener("deviceready", onDeviceReady, false);
 
-function onDeviceReady() {
+/* function onDeviceReady() {
     document.addEventListener("backbutton", onBackKeyDown, false);
     $("#hiduuid").val(device.uuid);
     window.plugins.imeiplugin.getImei(callback);
@@ -25,7 +25,6 @@ function onDeviceReady() {
                 var tagdata = nfcEvent.tag.ndefMessage[0]["payload"];
 				alert(tagdata);
                 var label = document.createTextNode(nfc.bytesToString(tagdata));
-                //txttruckno.value = label.data.substring(3);
                 txttag.value=label.data.substring(3);
 				alert(nfcEvent);
                 lblerr.innerHTML = "";
@@ -51,7 +50,17 @@ function onDeviceReady() {
     function(){
         lblerr.innerHTML = "";
     });
+} */
+
+
+
+function onDeviceReady() {
+  nfc.addTagDiscoveredListener(nfcTagDetected); // add NFC listener
 }
+function nfcTagDetected(reading){ 
+  alert(reading.tag.id); // alert the id of the NFC reading
+} 
+
 /* onDeviceReady: function() {
     app.receivedEvent('deviceready');
 $("#loading").hide();
