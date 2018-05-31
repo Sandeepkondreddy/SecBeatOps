@@ -67,8 +67,11 @@ function nfcTagDetected(reading){
   alert(reading.tag.id); // alert the id of the NFC reading
   getLocationDetails(reading.tag.id);
   txtBeatOfficer.val($("#hidusrid").val());
-  $("#txttag").val(reading.tag.id);
-  
+  var tagdata= reading.tag.id;
+  alert(tagdata);
+  //$("#txttag").val(reading.tag.id);
+  //$("#txttag").val(result[0].TagNo);
+  //$("#txttag").val(result.text);
 } 
 
 /* onDeviceReady: function() {
@@ -486,6 +489,7 @@ function getUserName(userid)
 function getLocationDetails(tagno)
 {
 	var TagNo = tagno == "" ? "" : tagno;
+	$("#txttag").val(TagNo);
 	$.ajax({
 		//url: 'http://localhost:51594/api/Account/GetUserNameById/' + usrid,
 		url: 'http://apps.kpcl.com/SecBeatAPI/api/Account/GetLocationByTagNo/'+ TagNo,
