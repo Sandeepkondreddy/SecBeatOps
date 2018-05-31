@@ -64,14 +64,10 @@ function onDeviceReady() {
 }
 function nfcTagDetected(reading){ 
   
-  alert(reading.tag.id); // alert the id of the NFC reading
+  //alert(reading.tag.id); // alert the id of the NFC reading
   getLocationDetails(reading.tag.id);
   txtBeatOfficer.val($("#hidusrid").val());
-  var tagdata= reading.tag.id;
-  alert(tagdata);
-  //$("#txttag").val(reading.tag.id);
-  //$("#txttag").val(result[0].TagNo);
-  //$("#txttag").val(result.text);
+
 } 
 
 /* onDeviceReady: function() {
