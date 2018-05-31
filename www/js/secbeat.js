@@ -67,7 +67,8 @@ function nfcTagDetected(reading){
   alert(reading.tag.id); // alert the id of the NFC reading
   getLocationDetails(reading.tag.id);
   txtBeatOfficer.val($("#hidusrid").val());
-  txttag.value=reading.tag.id;
+  $("#txttag").val(reading.tag.id);
+  
 } 
 
 /* onDeviceReady: function() {
