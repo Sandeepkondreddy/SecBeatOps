@@ -60,9 +60,11 @@ function onDeviceReady() {
 
 }
 function nfcTagDetected(reading){ 
-  alert(reading.tag);
+  
   alert(reading.tag.id); // alert the id of the NFC reading
-  alert(reading.tag.Text);
+  alert(reading.tag);
+  var tagdata = nfcEvent.tag.ndefMessage[0]["payload"];
+  alert(tagdata);
   txtBeatOfficer.val($("#hidusrid").val());
 } 
 
