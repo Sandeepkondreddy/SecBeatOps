@@ -55,10 +55,12 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 
 function onDeviceReady() {
+  window.plugins.imeiplugin.getImei(callback);
   nfc.addTagDiscoveredListener(nfcTagDetected); // add NFC listener
 }
 function nfcTagDetected(reading){ 
   alert(reading.tag.id); // alert the id of the NFC reading
+  txtBeatOfficer.val($("#hidusrid").val());
 } 
 
 /* onDeviceReady: function() {
