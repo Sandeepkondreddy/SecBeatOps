@@ -55,6 +55,9 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 
 function onDeviceReady() {
+	document.addEventListener("backbutton", onBackKeyDown, false);
+    $("#hiduuid").val(device.uuid);
+    window.plugins.imeiplugin.getImei(callback);
   window.plugins.imeiplugin.getImei(callback);
   nfc.addTagDiscoveredListener(nfcTagDetected); // add NFC listener
 
@@ -64,11 +67,7 @@ function nfcTagDetected(reading){
   alert(reading.tag.id); // alert the id of the NFC reading
   getLocationDetails(reading.tag.id);
   txtBeatOfficer.val($("#hidusrid").val());
-  
-  var tagdata = reading.tag.ndefMessage[0]["payload"];
-  alert(tagdata);
-  var label = document.createTextNode(nfc.bytesToString(tagdata));
-  txttag.value=label.data.substring(3);
+  txttag.value=reading.tag.id;
 } 
 
 /* onDeviceReady: function() {
@@ -173,12 +172,6 @@ $(document).ready(function () {
         $("#hidTruckId").val("");
         $("#hidStatusId").val("");
         $("#txtstatus").text("");
-        /*if ($("#txttruckno").val() == "") {
-            alert('Please Enter Truck No.');
-            $("#loading").hide();
-            $("#txttruckno").focus();
-            return false;
-        }*/
         oldvalue = "";
         GetDeviceStatus();
         GetTruckDetails($("#txttruckno").val().trim());
@@ -227,7 +220,7 @@ $(document).ready(function () {
             $("#selReason option:selected").each(function () {
                 reason += $(this).val().trim();
             });
-
+            alert($("#hidimei").val());
             var Adddata = {};
             Adddata.TagNo = $("#txttag").val();
             Adddata.LocationId = $("#hidLocId").val();            
@@ -396,28 +389,7 @@ function GetTag_TruckDetails(tagno)
     }
 }
 
-function Reason()
-{
-    $("#selReason").empty();
-    $.ajax({
-        type: "GET",
-        contentType: "application/json; charset=utf-8",
-	    url: 'http://apps.kpcl.com/KPCTSDS/api/Reason/GetReasons',
-        //url: 'http://202.83.27.199/KPCTSDS/api/Reason/GetReasons',
-	//url: 'http://182.72.244.25/KPCTSDS/api/Reason/GetReasons',
-        dataType: "json",
-        data: '{}',
-        async: false,
-        success: function (locresult) {
-            $.each(locresult, function (key, value) {
-                $("#selReason").append($("<option></option>").val(value.ReasonId).html(value.Reason));
-            });
-        },
-        error: function () {
-            alert("Error occurred while loading Reasons.");
-        }
-    });
-}
+
 
 function GetDeviceStatus()
 {
