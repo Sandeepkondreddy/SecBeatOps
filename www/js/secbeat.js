@@ -211,6 +211,10 @@ $(document).ready(function () {
             alert('Please Scan Tag.');
 			//window.location.href = 'TallySheet.html?user=' + btoa($("#hidusrid").val()) + '&trkid=' + btoa($("#hidTruckId").val()) + '&trkno=' + btoa($("#txttruckno").val().trim()) + '&loctype=' + btoa($("#hidloctype").val()) + '';
         }
+		else if($("#txtloc").val() == "")
+		{
+			 alert('Location details not found.');
+		}
         else
         {
             $btn.html("<i class='fa fa-spinner fa-spin'></i>data is submitting please wait...");
