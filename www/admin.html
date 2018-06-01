@@ -73,7 +73,7 @@
                 background-color: #F1654C;
             }
             .box4{
-                background-color: #83CF8F;
+                background-color: #00b386;
             }
             .fa{
                 color: #F1FBFD;
@@ -133,11 +133,11 @@
                         </div>
                     </td>
                 </tr>
-<!--                 <tr>
+                <!-- <tr>
                     <td style="padding: 7px;">
                         <div class="box box2">
                             <span><i class="fa fa-sitemap fa-5x" aria-hidden="true"></i></span><br>
-                            <label>Stage Mapping</label>
+                            <label>NFC Tag Config</label>
                         </div>
                     </td>
                 </tr> -->
@@ -146,6 +146,14 @@
                         <div class="box box3">
                             <span><i class="fa fa-dashboard fa-5x" aria-hidden="true"></i></span><br>
                             <label>Sec Beat</label>
+                        </div>
+                    </td>
+                </tr>
+				<tr>
+                    <td style="padding: 7px;">
+                        <div class="box box4">
+                            <span><i class="fa fa-gear fa-5x" aria-hidden="true"></i></span><br>
+                            <label>NFC Tag Config</label>
                         </div>
                     </td>
                 </tr>
@@ -191,9 +199,9 @@
             $("#loading").show();
             window.location.href = 'RegDevice.html?user=' + btoa($("#hidusrid").val()) + '';
         });
-        $(".box2").click(function(){
+        $(".box4").click(function(){
             $("#loading").show();
-            window.location.href = 'StageMapping.html?user=' + btoa($("#hidusrid").val()) + '';
+            window.location.href = 'NFCTagConfig.html?user=' + btoa($("#hidusrid").val()) + '';
         });
         $(".box3").click(function(){
             $("#loading").show();
