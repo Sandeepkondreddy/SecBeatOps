@@ -32,7 +32,7 @@
     <!--<plugin name="cordova-plugin-barcodescanner" source="npm" /> for only Android 5x-->
     <plugin name="cordova-plugin-barcode-scanner2" source="npm"/><!--plugin for Qr Code read Android 5x,6x,7x-->
     <plugin name="cordova-plugin-battery-status" source="npm" />
-    <plugin name="cordova-plugin-camera" source="npm" spec="6.3.0"/>
+    <plugin name="cordova-plugin-camera" source="npm" spec="4.0.3"/>
     <plugin name="cordova-plugin-device" source="npm" />
     <plugin name="cordova-plugin-geolocation" source="npm" />
     <plugin name="cordova-plugin-statusbar" source="npm" />
