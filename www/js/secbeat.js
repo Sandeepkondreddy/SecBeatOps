@@ -224,7 +224,7 @@ $(document).ready(function () {
             $("#selReason option:selected").each(function () {
                 reason += $(this).val().trim();
             });
-            alert($("#hidimei").val());
+            //alert($("#hidimei").val());
             var Adddata = {};
             Adddata.TagNo = $("#txttag").val();
             Adddata.LocationId = $("#hidLocId").val();            
