@@ -474,7 +474,7 @@ function getUserName(userid)
             success: function (result) {
                 if (result.length > 0) {
 						$("#txtBeatOfficer").val(result[0].EmployeeName);
-						if($("#txtBeatOfficer").val == "")
+						if($("#txtBeatOfficer").val() == "")
 							$("#txtBeatOfficer").val(result[0].LoginId);
 					}
                 else {
