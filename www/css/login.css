@@ -15,6 +15,48 @@ body{
     z-index: 10000px;*/
     box-shadow: 3px 3px 2px 0px #505050;
 }
+.imglogo{
+    border-radius: 10%;
+    height: 35px;
+    width: 35px;
+    box-shadow: 1px 1px 2px #b4b4b4;
+}
+.headerbar{
+    background-color: #2C82C9;/*#022A5B;*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 10px;
+    width: 100%;
+    vertical-align: middle;
+    text-align: center;
+    height: 50px;
+	box-shadow: 2px 2px 2px #505050;
+    /*border-top: 3px solid #e74c3c;
+    border-bottom: 2px solid #e74c3c;*/
+    /* IE10+ */
+    /*background-image: -ms-linear-gradient(bottom, #f0f0f0 10%, #f5f5f5 70%);*/
+    /* Mozilla Firefox */
+    /*background-image: -moz-linear-gradient(bottom, #f0f0f0 10%, #f5f5f5 70%);*/
+    /* Opera */
+    /*background-image: -o-linear-gradient(bottom, #f0f0f0 10%, #f5f5f5 70%);*/
+    /* Webkit (Safari/Chrome 10) */
+    /*background-image: -webkit-gradient(linear, left bottom, left top, color-stop(10, #f0f0f0), color-stop(70, #f5f5f5));*/
+    /* Webkit (Chrome 11+) */
+    /*background-image: -webkit-linear-gradient(bottom, #f0f0f0 10%, #f5f5f5 70%);*/
+    /* W3C Markup */
+    /*background-image: linear-gradient(to top, #f0f0f0 10%, #f5f5f5 70%);
+    background-attachment: fixed;*/
+}
+.headertext{
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 2px 1px 2px #9D9C9C;
+}
+
 .inputtext{
     border: 0px;
     background-color: #F6F6F6;
