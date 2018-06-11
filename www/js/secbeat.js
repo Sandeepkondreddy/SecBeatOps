@@ -493,6 +493,7 @@ function getUserName(userid)
 
 function getLocationDetails(tagno)
 {
+	$("#loading").show();
 	var TagNo = tagno == "" ? "" : tagno;
 	$("#txttag").val(TagNo);
 	$.ajax({
@@ -508,7 +509,8 @@ function getLocationDetails(tagno)
 						$("#hidLocId").val(result[0].LocationId);
 					}
                 else {
-                    $("#txtstatus").text("No Data Found");
+                    //$("#txtstatus").text("No Data Found");
+					alert("No Data Found.");
                     $("#txtstatus").attr('class', 'text-danger');
                 }
             },
@@ -518,7 +520,7 @@ function getLocationDetails(tagno)
                 $("#loading").hide();
             }
         });
-    
+    $("#loading").hide();
 }
 
 
