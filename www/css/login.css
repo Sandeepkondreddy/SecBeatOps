@@ -91,14 +91,14 @@ body{
 .btn-custom {
     border-radius: 3px;
     border: none;
-    background-color: #1BBC9B;
+    background-color: #1b8dbc;
     color: white;
     vertical-align: middle;
     width: 100%;
     outline: none;
     padding: 6px;
     /*box-shadow: 1px 1px 5px #f0030f;*/
-    border-bottom: 3px solid #16997E;
+    border-bottom: 3px solid #1b8dbc;
     font-weight: bold;
     font-size: 15px;
     text-shadow: 1px 1px 2px #9D9C9C;
